@@ -1,2 +1,13 @@
 server:
   port: 8181
+
+# spring cloud required
+spring:
+  application:
+    name: echo
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8383/eureka
+    fetchRegistry: true

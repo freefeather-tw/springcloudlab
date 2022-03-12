@@ -1,2 +1,14 @@
 server:
   port: 8383
+
+# spring cloud required
+spring:
+  application:
+    name: EurekaServiceDiscovery
+
+eureka:
+  client:
+    registerWithEureka: false
+    fetchRegistry: false
+    service-url:
+      defaultZone: http://localhost:8383/eureka

@@ -1,6 +1,36 @@
 server:
   port: 8080
 
+# spring cloud gateway required
+spring:
+  application:
+    name: APIGateway
+  cloud:
+    loadbalancer:
+      ribbon:
+        enabled: false
+    gateway:
+      globalcors:
+        cors-configurations:
+          '[/**]':
+            allowedOriginPatterns:
+              - '*'
+            allowedHeaders:
+              - '*'
+            allow-credentials: true
+            allowedMethods:
+              - '*'
+      discovery:
+        locator:
+          enabled: true
+          lowerCaseServiceId: true
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8383/eureka
+    fetchRegistry: true
+
 ap:
   server: 'http://localhost:8282/'
   prefix: /api

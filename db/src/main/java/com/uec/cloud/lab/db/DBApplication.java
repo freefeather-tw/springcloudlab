@@ -2,12 +2,14 @@ package com.uec.cloud.lab.db;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
 
 @SpringBootApplication
-public class DbApplication {
+@EnableEurekaClient
+public class DBApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(DbApplication.class, args);
+		SpringApplication.run(DBApplication.class, args);
 	}
 
 }

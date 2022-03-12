@@ -9,7 +9,7 @@ import java.util.Map;
 @RequestMapping("/")
 public class EchoController {
 
-    @GetMapping(path = "/echo/{message}")
+    @GetMapping(path = "/{message}")
     @ResponseBody
     public final Map<String, Object> echo(
             @PathVariable("message") final String message) {
