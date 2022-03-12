@@ -1,0 +1,12 @@
+server:
+  port: 8080
+
+ap:
+  server: 'http://localhost:8282/'
+  prefix: /api
+
+logging:
+  level:
+    root: ERROR
+    org.springframework: ERROR
+    com.uec: DEBUG
