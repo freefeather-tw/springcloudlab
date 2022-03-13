@@ -11,3 +11,10 @@ eureka:
     serviceUrl:
       defaultZone: http://localhost:8383/eureka
     fetchRegistry: true
+
+#logging config
+logging:
+  level:
+    root: ERROR
+    org.springframework: ERROR
+    com.uec: DEBUG
