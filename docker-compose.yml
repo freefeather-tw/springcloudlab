@@ -1,0 +1,34 @@
+---
+  version: "2"
+  networks:
+    test-network:
+      external: true
+  services:
+    discovery:
+      image: discovery
+      container_name: discovery
+      networks: 
+        - test-network
+      ports:
+        - 8383:8383
+      restart: unless-stopped
+    apigateway:
+      image: apigateway
+      container_name: apigateway
+      networks: 
+        - test-network
+      ports:
+        - 8080:8080
+      restart: unless-stopped
+    echo:
+      image: echo
+      container_name: echo
+      networks: 
+        - test-network
+      restart: unless-stopped
+    db:
+      image: db
+      container_name: db
+      networks: 
+        - test-network
+      restart: unless-stopped
