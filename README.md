@@ -58,3 +58,42 @@ docker push localhost:5000/apigateway
 docker push localhost:5000/echo
 docker push localhost:5000/db
 ```
+
+6. 安裝k8s
+
+https://blog.kennycoder.io/2020/03/24/Kubernetes-%E5%85%83%E4%BB%B6%E5%8E%9F%E7%90%86%E4%BB%8B%E7%B4%B9/
+
+``` powershell
+New-Item -Path 'c:\' -Name 'minikube' -ItemType Directory -Force
+Invoke-WebRequest -OutFile 'c:\minikube\minikube.exe' -Uri 'https://github.com/kubernetes/minikube/releases/latest/download/minikube-windows-amd64.exe' -UseBasicParsing
+
+$oldPath = [Environment]::GetEnvironmentVariable('Path', [EnvironmentVariableTarget]::Machine)
+if ($oldPath.Split(';') -inotcontains 'C:\minikube'){ `
+  [Environment]::SetEnvironmentVariable('Path', $('{0};C:\minikube' -f $oldPath), [EnvironmentVariableTarget]::Machine) `
+}
+
+```
+安裝Hyper-V功能。設定 -> 應用程式 -> 選用功能 -> 更多 Windows 功能 -> 勾選全部Hyper-V功能。
+
+``` powershell
+minikube config set driver hyperv
+
+minikube start
+
+minikube dashboard
+
+minikube kubectl -- get po -A
+
+kubectl create deployment hello-minikube --image=k8s.gcr.io/echoserver:1.4
+kubectl expose deployment hello-minikube --type=NodePort --port=8080
+
+kubectl get services hello-minikube
+
+minikube service hello-minikube
+
+kubectl port-forward service/hello-minikube 7080:8080
+```
+
+node
+
+pod
