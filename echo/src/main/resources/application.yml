@@ -6,11 +6,11 @@ spring:
   application:
     name: echo
 
-eureka:
-  client:
-    serviceUrl:
-      defaultZone: http://discovery:8383/eureka
-    fetchRegistry: true
+#eureka:
+#  client:
+#    serviceUrl:
+#      defaultZone: http://discovery:8383/eureka
+#    fetchRegistry: true
 
 #logging config
 logging:

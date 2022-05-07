@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: echo-pod
+  labels:
+    app: echo
+  annotations:
+    builder: jackyang
+spec:
+  containers:
+    - name: echo
+      image: freefeather/echo
+      ports:
+        - containerPort: 8181

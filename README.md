@@ -94,6 +94,45 @@ minikube service hello-minikube
 kubectl port-forward service/hello-minikube 7080:8080
 ```
 
-node
+7. 建立 POD
 
-pod
+先將影像檔推到 Docker Hub上
+
+撰寫 pod.yaml 檔案
+``` yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  name: echo-pod
+  labels:
+    app: echo
+  annotations:
+    builder: jackyang
+spec:
+  containers:
+    - name: echo
+      image: freefeather/echo
+      ports:
+        - containerPort: 8181
+```
+
+建立
+``` powershell
+kubectl create -f pod.yaml
+```
+
+察看pod執行狀態
+``` powershell
+kubectl get pods
+```
+
+察看pod詳細內容
+``` powershell
+kubectl describe pod echo-pod
+```
+
+port forward
+``` powershell
+kubectl port-forward echo-pod 8181:8181
+```
+
